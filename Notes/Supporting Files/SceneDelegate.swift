@@ -7,17 +7,23 @@
 //
 
 import UIKit
+import RxSwift
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    let disposeBag = DisposeBag()
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
+        
+        let coordinator = SceneCoordinator(window: window!)
         window?.windowScene = windowScene
-        let taskViewController = TasksViewController()
-        window?.rootViewController = UINavigationController(rootViewController: taskViewController)
-        window?.makeKeyAndVisible()
+        let storage = StorageData()
+        let listViewModel = TaskListViewModel(title: "Задачи", storage: storage, sceneCoordinator: coordinator)
+        let listScene = Scene.list(listViewModel)
+        coordinator.transition(to: listScene, using: .root, animated: true).subscribe().disposed(by: disposeBag)
     }
 }

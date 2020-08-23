@@ -15,6 +15,13 @@
 		778ABD8C24E9A3DF00614D3B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 778ABD8A24E9A3DF00614D3B /* LaunchScreen.storyboard */; };
 		778ABD9424E9A84800614D3B /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778ABD9324E9A84800614D3B /* AddTaskViewController.swift */; };
 		778ABD9624E9AA8200614D3B /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778ABD9524E9AA8200614D3B /* Task.swift */; };
+		778ABDDD24F1958900614D3B /* TaskListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778ABDDC24F1958900614D3B /* TaskListViewModel.swift */; };
+		778ABDE524F24F1D00614D3B /* StorageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778ABDE424F24F1D00614D3B /* StorageData.swift */; };
+		778ABDE724F2543B00614D3B /* ViewModelBindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778ABDE624F2543B00614D3B /* ViewModelBindableType.swift */; };
+		778ABDE924F25BD800614D3B /* AddTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778ABDE824F25BD800614D3B /* AddTaskViewModel.swift */; };
+		778ABDEC24F25E8F00614D3B /* TransitionStyleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778ABDEB24F25E8F00614D3B /* TransitionStyleModel.swift */; };
+		778ABDEE24F25EA600614D3B /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778ABDED24F25EA600614D3B /* Scene.swift */; };
+		778ABDF024F2600200614D3B /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778ABDEF24F2600100614D3B /* SceneCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +34,13 @@
 		778ABD8D24E9A3DF00614D3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		778ABD9324E9A84800614D3B /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		778ABD9524E9AA8200614D3B /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		778ABDDC24F1958900614D3B /* TaskListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewModel.swift; sourceTree = "<group>"; };
+		778ABDE424F24F1D00614D3B /* StorageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageData.swift; sourceTree = "<group>"; };
+		778ABDE624F2543B00614D3B /* ViewModelBindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBindableType.swift; sourceTree = "<group>"; };
+		778ABDE824F25BD800614D3B /* AddTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewModel.swift; sourceTree = "<group>"; };
+		778ABDEB24F25E8F00614D3B /* TransitionStyleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionStyleModel.swift; sourceTree = "<group>"; };
+		778ABDED24F25EA600614D3B /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; wrapsLines = 0; };
+		778ABDEF24F2600100614D3B /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
 		7C6B8B596F756779E23B6BD4 /* Pods-Notes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notes.debug.xcconfig"; path = "Target Support Files/Pods-Notes/Pods-Notes.debug.xcconfig"; sourceTree = "<group>"; };
 		914001127D5C470E19EBCF33 /* Pods_Notes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Notes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6DEC014EE23D7C3ABD4A5FD /* Pods-Notes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notes.release.xcconfig"; path = "Target Support Files/Pods-Notes/Pods-Notes.release.xcconfig"; sourceTree = "<group>"; };
@@ -82,16 +96,87 @@
 		778ABD7E24E9A3DE00614D3B /* Notes */ = {
 			isa = PBXGroup;
 			children = (
-				778ABD7F24E9A3DE00614D3B /* AppDelegate.swift */,
-				778ABD9524E9AA8200614D3B /* Task.swift */,
-				778ABD8124E9A3DE00614D3B /* SceneDelegate.swift */,
-				778ABD8324E9A3DE00614D3B /* TasksViewController.swift */,
-				778ABD9324E9A84800614D3B /* AddTaskViewController.swift */,
-				778ABD8824E9A3DF00614D3B /* Assets.xcassets */,
-				778ABD8A24E9A3DF00614D3B /* LaunchScreen.storyboard */,
+				778ABDE624F2543B00614D3B /* ViewModelBindableType.swift */,
+				778ABDEA24F25D5700614D3B /* Scene */,
+				778ABDDE24F24E2F00614D3B /* Storage */,
+				778ABDE024F24E4600614D3B /* Model */,
+				778ABDDB24F1956A00614D3B /* TaskListModule */,
+				778ABDE124F24E4F00614D3B /* AddTaskModule */,
+				778ABDDF24F24E3600614D3B /* Supporting Files */,
+				778ABDE324F24E7600614D3B /* Storyboards */,
+				778ABDE224F24E6A00614D3B /* Resources */,
 				778ABD8D24E9A3DF00614D3B /* Info.plist */,
 			);
 			path = Notes;
+			sourceTree = "<group>";
+		};
+		778ABDDB24F1956A00614D3B /* TaskListModule */ = {
+			isa = PBXGroup;
+			children = (
+				778ABD8324E9A3DE00614D3B /* TasksViewController.swift */,
+				778ABDDC24F1958900614D3B /* TaskListViewModel.swift */,
+			);
+			path = TaskListModule;
+			sourceTree = "<group>";
+		};
+		778ABDDE24F24E2F00614D3B /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				778ABDE424F24F1D00614D3B /* StorageData.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		778ABDDF24F24E3600614D3B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				778ABD8124E9A3DE00614D3B /* SceneDelegate.swift */,
+				778ABD7F24E9A3DE00614D3B /* AppDelegate.swift */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		778ABDE024F24E4600614D3B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				778ABD9524E9AA8200614D3B /* Task.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		778ABDE124F24E4F00614D3B /* AddTaskModule */ = {
+			isa = PBXGroup;
+			children = (
+				778ABD9324E9A84800614D3B /* AddTaskViewController.swift */,
+				778ABDE824F25BD800614D3B /* AddTaskViewModel.swift */,
+			);
+			path = AddTaskModule;
+			sourceTree = "<group>";
+		};
+		778ABDE224F24E6A00614D3B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				778ABD8824E9A3DF00614D3B /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		778ABDE324F24E7600614D3B /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				778ABD8A24E9A3DF00614D3B /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		778ABDEA24F25D5700614D3B /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				778ABDEB24F25E8F00614D3B /* TransitionStyleModel.swift */,
+				778ABDED24F25EA600614D3B /* Scene.swift */,
+				778ABDEF24F2600100614D3B /* SceneCoordinator.swift */,
+			);
+			path = Scene;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,11 +293,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				778ABDEC24F25E8F00614D3B /* TransitionStyleModel.swift in Sources */,
 				778ABD8424E9A3DE00614D3B /* TasksViewController.swift in Sources */,
+				778ABDE924F25BD800614D3B /* AddTaskViewModel.swift in Sources */,
 				778ABD9424E9A84800614D3B /* AddTaskViewController.swift in Sources */,
 				778ABD9624E9AA8200614D3B /* Task.swift in Sources */,
+				778ABDF024F2600200614D3B /* SceneCoordinator.swift in Sources */,
+				778ABDE524F24F1D00614D3B /* StorageData.swift in Sources */,
 				778ABD8024E9A3DE00614D3B /* AppDelegate.swift in Sources */,
+				778ABDE724F2543B00614D3B /* ViewModelBindableType.swift in Sources */,
 				778ABD8224E9A3DE00614D3B /* SceneDelegate.swift in Sources */,
+				778ABDDD24F1958900614D3B /* TaskListViewModel.swift in Sources */,
+				778ABDEE24F25EA600614D3B /* Scene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
