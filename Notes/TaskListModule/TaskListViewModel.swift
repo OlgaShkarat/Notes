@@ -33,23 +33,20 @@ class TaskListViewModel {
          }
      }
      
-    func performCancel(task: Task) -> CocoaAction {
+    func performCancel() -> CocoaAction {
          return Action {
-            return  self.storage.delete(task: task).map { _ in}
+            return  self.storage.delete().map { _ in}
          }
      }
     
     func createTask() -> CocoaAction {
         
         return CocoaAction { _ in
-            return self.storage.create(content: "")
-                .flatMap { task -> Observable<Void> in
-                    let addTaskViewModel = AddTaskViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage, saveAction: self.perforUpdate(), cancelAction: self.performCancel(task: task))
-    
-                    let addScene = Scene.add(addTaskViewModel)
-                    
-                    return self.sceneCoordinator.transition(to: addScene, using: .modal, animated: true).asObservable().map { _ in }
-            }
+            let addTaskViewModel = AddTaskViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage, saveAction: self.perforUpdate(), cancelAction: self.performCancel())
+            
+            let addScene = Scene.add(addTaskViewModel)
+            
+            return self.sceneCoordinator.transition(to: addScene, using: .modal, animated: true).asObservable().map { _ in }
         }
     }
 }

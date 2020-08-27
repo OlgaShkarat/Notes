@@ -8,13 +8,11 @@
 
 import Foundation
 
-enum TransitionStyle {
+enum SceneTransitionType {
     case root
     case modal
 }
 
-enum TransitionError: Error {
-    case navigationControllerMissing
-    case connotPop
-    case unknown
+enum SceneTransitionError: Error {
+    case error
 }

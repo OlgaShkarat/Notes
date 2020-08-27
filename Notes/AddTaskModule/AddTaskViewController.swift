@@ -18,6 +18,7 @@ class AddTaskViewController: UIViewController, ViewModelBindableType {
     let textField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.borderStyle = .roundedRect
         textField.placeholder = "Task name"
         return textField
     }()

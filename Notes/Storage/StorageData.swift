@@ -9,21 +9,15 @@
 import RxSwift
 
 protocol StorageType {
-    func create(content: String) -> Observable<Task>
     func list() -> Observable<[Task]>
     func update(content: String) -> Observable<Task>
-    func delete(task: Task) -> Observable<Task>
+    func delete() -> Observable<Task>
 }
 
 class StorageData: StorageType {
     
-    private var listOfTasks = [Task(content: "Сделать дом/задание")]
-    private lazy var store = BehaviorSubject<[Task]>(value: listOfTasks)
-    
-    func create(content: String) -> Observable<Task> {
-        let newTask = Task(content: content)
-        return Observable.just(newTask)
-    }
+    private var listOfTasks = [Task]()
+    private lazy var store = BehaviorSubject<[Task]>(value: [Task]())
     
     func list() -> Observable<[Task]> {
         return store.asObservable()
@@ -36,8 +30,7 @@ class StorageData: StorageType {
         return Observable.just(updated)
     }
     
-    func delete(task: Task) -> Observable<Task> {
-        store.onNext(listOfTasks)
-        return Observable.just(task)
+    func delete() -> Observable<Task> {
+        return Observable.never()
     }
 }

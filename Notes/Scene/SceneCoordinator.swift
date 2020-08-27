@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 
 protocol SceneCoordinatorType {
-    func transition(to scene: Scene, using style: TransitionStyle, animated: Bool) -> Completable
+    func transition(to scene: Scene, using style: SceneTransitionType, animated: Bool) -> Completable
     func close(animated: Bool) -> Completable
 }
 
@@ -26,7 +26,7 @@ class SceneCoordinator: SceneCoordinatorType {
         self.window.makeKeyAndVisible()
     }
     
-    func transition(to scene: Scene, using style: TransitionStyle, animated: Bool) -> Completable {
+    func transition(to scene: Scene, using style: SceneTransitionType, animated: Bool) -> Completable {
         let subject = PublishSubject<Void>()
         let target = scene.showViewController()
         
@@ -61,7 +61,7 @@ class SceneCoordinator: SceneCoordinatorType {
                 self.currentVC = nav.viewControllers.last!
                 completable(.completed)
             } else {
-                completable(.error(TransitionError.unknown))
+                completable(.error(SceneTransitionError.error))
             }
 
             return Disposables.create()
