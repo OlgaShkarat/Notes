@@ -11,7 +11,7 @@ import RxSwift
 protocol StorageType {
     func create(content: String) -> Observable<Task>
     func list() -> Observable<[Task]>
-    func update(task: Task, content: String) -> Observable<Task>
+    func update(content: String) -> Observable<Task>
     func delete(task: Task) -> Observable<Task>
 }
 
@@ -22,7 +22,6 @@ class StorageData: StorageType {
     
     func create(content: String) -> Observable<Task> {
         let newTask = Task(content: content)
-        listOfTasks.insert(newTask, at: 0)
         return Observable.just(newTask)
     }
     
@@ -30,26 +29,15 @@ class StorageData: StorageType {
         return store.asObservable()
     }
     
-    func update(task: Task, content: String) -> Observable<Task> {
-        let updated = Task(original: task, updateContent: content)
-        
-        if let index = listOfTasks.firstIndex(where: { $0 == task }) {
-            listOfTasks.remove(at: index)
-            listOfTasks.insert(updated, at: index)
-        }
-        
+    func update(content: String) -> Observable<Task> {
+        let updated = Task(content: content)
+        listOfTasks.append(updated)
         store.onNext(listOfTasks)
-        
         return Observable.just(updated)
     }
     
     func delete(task: Task) -> Observable<Task> {
-        if let index = listOfTasks.firstIndex(where: { $0 == task }) {
-            listOfTasks.remove(at: index)
-        }
-        
         store.onNext(listOfTasks)
-        
         return Observable.just(task)
     }
 }

@@ -8,15 +8,11 @@
 
 import Foundation
 
-struct Task: Equatable {
+struct Task {
+    
     var content: String
     
     init(content: String) {
         self.content = content
-    }
-    
-    init(original: Task, updateContent: String) {
-        self = original
-        self.content = updateContent
     }
 }

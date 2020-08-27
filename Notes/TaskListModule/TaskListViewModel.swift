@@ -27,9 +27,9 @@ class TaskListViewModel {
         self.sceneCoordinator = sceneCoordinator
     }
     
-    func perforUpdate(task: Task) -> Action<String, Void> {
+    func perforUpdate() -> Action<String, Void> {
          return Action { input in
-            return self.storage.update(task: task, content: input).map { _ in }
+            return self.storage.update(content: input).map { _ in }
          }
      }
      
@@ -44,7 +44,7 @@ class TaskListViewModel {
         return CocoaAction { _ in
             return self.storage.create(content: "")
                 .flatMap { task -> Observable<Void> in
-                    let addTaskViewModel = AddTaskViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage, saveAction: self.perforUpdate(task: task), cancelAction: self.performCancel(task: task))
+                    let addTaskViewModel = AddTaskViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage, saveAction: self.perforUpdate(), cancelAction: self.performCancel(task: task))
     
                     let addScene = Scene.add(addTaskViewModel)
                     

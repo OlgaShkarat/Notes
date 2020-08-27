@@ -19,7 +19,6 @@ class TasksViewController: UIViewController, ViewModelBindableType {
     var tableView: UITableView!
     var viewModel: TaskListViewModel!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableView()
@@ -34,6 +33,10 @@ class TasksViewController: UIViewController, ViewModelBindableType {
             .bind(to: tableView.rx.items(cellIdentifier: cellId)) { row, task, cell in
                 cell.textLabel?.text = task.content
         }.disposed(by: disposeBag)
+        
+        tableView.rx.itemSelected.subscribe(onNext: { (indexPath) in
+            self.tableView.deselectRow(at: indexPath, animated: true)
+            }).disposed(by: disposeBag)
     }
     
     private func setTableView() {

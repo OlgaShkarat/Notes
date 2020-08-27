@@ -37,10 +37,10 @@ class SceneCoordinator: SceneCoordinatorType {
             subject.onCompleted()
             
         case .modal:
+            target.modalPresentationStyle = .fullScreen
             currentVC.present(target, animated: animated) {
                 subject.onCompleted()
             }
-            
             currentVC = target
         }
 
