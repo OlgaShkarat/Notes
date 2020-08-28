@@ -1,5 +1,5 @@
 //
-//  TransitionStyleModel.swift
+//  SceneTransitionModel.swift
 //  Notes
 //
 //  Created by Ольга on 23.08.2020.

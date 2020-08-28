@@ -28,6 +28,7 @@ class AddTaskViewModel {
         
         self.saveAction = Action<String, Void> { input in
             if let action = saveAction {
+                UserDefaults.standard.set(input, forKey: "task")
                 action.execute(input)
             }
             return sceneCoordinator.close(animated: true).asObservable().map { _ in }

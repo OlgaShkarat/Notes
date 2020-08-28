@@ -12,7 +12,7 @@ import Action
 
 class TaskListViewModel {
  
-    var title: Driver<String>
+    var title: Observable<String>
     
     var taskList: Observable<[Task]> {
         return storage.list()
@@ -22,27 +22,26 @@ class TaskListViewModel {
     let sceneCoordinator: SceneCoordinatorType
     
     init(title: String, storage: StorageType, sceneCoordinator: SceneCoordinatorType) {
-        self.title = Observable.just(title).asDriver(onErrorJustReturn: "")
+        self.title = Observable.just(title)
         self.storage = storage
         self.sceneCoordinator = sceneCoordinator
     }
     
-    func perforUpdate() -> Action<String, Void> {
+    func update() -> Action<String, Void> {
          return Action { input in
             return self.storage.update(content: input).map { _ in }
          }
      }
      
-    func performCancel() -> CocoaAction {
+    func cancel() -> CocoaAction {
          return Action {
-            return  self.storage.delete().map { _ in}
+            return  self.storage.cancel().map { _ in}
          }
      }
     
     func createTask() -> CocoaAction {
-        
         return CocoaAction { _ in
-            let addTaskViewModel = AddTaskViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage, saveAction: self.perforUpdate(), cancelAction: self.performCancel())
+            let addTaskViewModel = AddTaskViewModel(sceneCoordinator: self.sceneCoordinator, storage: self.storage, saveAction: self.update(), cancelAction: self.cancel())
             
             let addScene = Scene.add(addTaskViewModel)
             

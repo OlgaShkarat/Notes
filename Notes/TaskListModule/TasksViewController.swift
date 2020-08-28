@@ -26,7 +26,7 @@ class TasksViewController: UIViewController, ViewModelBindableType {
     }
     
     func bindViewModel() {
-        viewModel.title.drive(navigationItem.rx.title).disposed(by: disposeBag)
+        viewModel.title.bind(to: navigationItem.rx.title).disposed(by: disposeBag)
         navigationItem.rightBarButtonItem?.rx.action = viewModel.createTask()
         
         viewModel.taskList
@@ -36,6 +36,7 @@ class TasksViewController: UIViewController, ViewModelBindableType {
         
         tableView.rx.itemSelected.subscribe(onNext: { (indexPath) in
             self.tableView.deselectRow(at: indexPath, animated: true)
+            
             }).disposed(by: disposeBag)
     }
     
