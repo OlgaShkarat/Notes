@@ -50,13 +50,19 @@ class TaskListViewModel {
     }
     
     lazy var showDetail: Action<Task, Void> = {
-           return Action { task in
-               
+        return Action { task in
+            
             let detailViewModel = DetailTaskViewModel(task: task, sceneCoordinator: self.sceneCoordinator, storage: self.storage)
-               
-               let detailScene = Scene.detail(detailViewModel)
+            
+            let detailScene = Scene.detail(detailViewModel)
+            
+            return self.sceneCoordinator.transition(to: detailScene, using: .push, animated: true).asObservable().map { _ in }
+        }
+    }()
     
-               return self.sceneCoordinator.transition(to: detailScene, using: .push, animated: true).asObservable().map { _ in }
-           }
-       }()
+    lazy var deleteTask: Action<Task, Swift.Never> = {
+        return Action { task in
+            return self.storage.delete(task: task).ignoreElements()
+        }
+    }()
 }

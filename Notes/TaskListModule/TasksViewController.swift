@@ -45,6 +45,12 @@ class TasksViewController: UIViewController, ViewModelBindableType {
             .map { $0 }
             .bind(to: viewModel.showDetail.inputs)
             .disposed(by: disposeBag)
+        
+        tableView.rx.modelDeleted(Task.self)
+            .asObservable()
+            .map({$0})
+            .bind(to: viewModel.deleteTask.inputs)
+            .disposed(by: disposeBag)
     }
     
     private func setTableView() {

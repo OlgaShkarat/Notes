@@ -12,6 +12,7 @@ protocol StorageType {
     func list() -> Observable<[Task]>
     func update(content: String) -> Observable<Task>
     func cancel() -> Observable<Task>
+    func delete(task: Task) -> Observable<Task>
 }
 
 class StorageData: StorageType {
@@ -44,5 +45,17 @@ class StorageData: StorageType {
     
     func cancel() -> Observable<Task> {
         return Observable.never()
+    }
+    
+    func delete(task: Task) -> Observable<Task> {
+        
+        if let index = listOfTasks.firstIndex(where: { $0.content == task.content }) {
+            listOfTasks.remove(at: index)
+        }
+        
+        tasks.onNext(listOfTasks)
+        
+        return Observable.just(task)
+        
     }
 }
