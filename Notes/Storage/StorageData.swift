@@ -42,7 +42,7 @@ class StorageData: StorageType {
         return Observable.just(Task(content: content))
     }
     
-    func delete() -> Observable<Task> {
+    func cancel() -> Observable<Task> {
         return Observable.never()
     }
 }

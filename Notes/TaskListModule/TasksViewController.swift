@@ -22,7 +22,7 @@ class TasksViewController: UIViewController, ViewModelBindableType {
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableView()
-        navigationItem.rightBarButtonItem  =  UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
     }
     
     func bindViewModel() {
@@ -38,6 +38,13 @@ class TasksViewController: UIViewController, ViewModelBindableType {
             self.tableView.deselectRow(at: indexPath, animated: true)
             
             }).disposed(by: disposeBag)
+
+        
+        tableView.rx.modelSelected(Task.self)
+            .asObservable()
+            .map { $0 }
+            .bind(to: viewModel.showDetail.inputs)
+            .disposed(by: disposeBag)
     }
     
     private func setTableView() {

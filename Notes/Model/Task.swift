@@ -10,9 +10,5 @@ import Foundation
 
 struct Task: Codable {
     
-    var content: String
-    
-    init(content: String) {
-        self.content = content
-    }
+    let content: String
 }

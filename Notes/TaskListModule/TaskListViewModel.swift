@@ -18,8 +18,8 @@ class TaskListViewModel {
         return storage.list()
     }
     
-    let storage: StorageType
-    let sceneCoordinator: SceneCoordinatorType
+    private let storage: StorageType
+    private let sceneCoordinator: SceneCoordinatorType
     
     init(title: String, storage: StorageType, sceneCoordinator: SceneCoordinatorType) {
         self.title = Observable.just(title)
@@ -27,13 +27,13 @@ class TaskListViewModel {
         self.sceneCoordinator = sceneCoordinator
     }
     
-    func update() -> Action<String, Void> {
+    private func update() -> Action<String, Void> {
          return Action { input in
             return self.storage.update(content: input).map { _ in }
          }
      }
      
-    func cancel() -> CocoaAction {
+    private func cancel() -> CocoaAction {
          return Action {
             return  self.storage.cancel().map { _ in}
          }
@@ -45,7 +45,18 @@ class TaskListViewModel {
             
             let addScene = Scene.add(addTaskViewModel)
             
-            return self.sceneCoordinator.transition(to: addScene, using: .modal, animated: true).asObservable().map { _ in }
+            return self.sceneCoordinator.transition(to: addScene, using: .push, animated: true).asObservable().map { _ in }
         }
     }
+    
+    lazy var showDetail: Action<Task, Void> = {
+           return Action { task in
+               
+            let detailViewModel = DetailTaskViewModel(task: task, sceneCoordinator: self.sceneCoordinator, storage: self.storage)
+               
+               let detailScene = Scene.detail(detailViewModel)
+    
+               return self.sceneCoordinator.transition(to: detailScene, using: .push, animated: true).asObservable().map { _ in }
+           }
+       }()
 }

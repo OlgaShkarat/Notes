@@ -10,7 +10,7 @@ import Foundation
 
 enum SceneTransitionType {
     case root
-    case modal
+    case push
 }
 
 enum SceneTransitionError: Error {

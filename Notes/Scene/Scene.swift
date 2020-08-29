@@ -11,6 +11,7 @@ import UIKit
 enum Scene {
     case list(TaskListViewModel)
     case add(AddTaskViewModel)
+    case detail(DetailTaskViewModel)
 }
 
 extension Scene {
@@ -26,6 +27,12 @@ extension Scene {
             var addViewController = AddTaskViewController()
             let navigationViewController = UINavigationController(rootViewController: addViewController)
             addViewController.bind(viewModel: viewModel)
+            return navigationViewController
+            
+        case .detail(let viewModel):
+            var detailViewController = DetailTaskViewController()
+            let navigationViewController = UINavigationController(rootViewController: detailViewController)
+            detailViewController.bind(viewModel: viewModel)
             return navigationViewController
         }
     }

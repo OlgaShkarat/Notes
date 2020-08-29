@@ -35,18 +35,17 @@ class SceneCoordinator: SceneCoordinatorType {
             currentVC = target
             window.rootViewController = target
             subject.onCompleted()
-            
-        case .modal:
+        case .push:
             target.modalPresentationStyle = .fullScreen
             currentVC.present(target, animated: animated) {
                 subject.onCompleted()
             }
             currentVC = target
         }
-
         return subject.ignoreElements()
     }
-  
+    
+    
     func close(animated: Bool) -> Completable {
         return Completable.create { [unowned self] completable in
             if let presentingVC = self.currentVC.presentingViewController {

@@ -12,20 +12,17 @@ import Action
 
 class AddTaskViewModel {
     
-    let storage: StorageType
-    let sceneCoordinator: SceneCoordinatorType
+    private let storage: StorageType
+    private let sceneCoordinator: SceneCoordinatorType
     let saveAction: Action<String, Void>
     let cancelAction: CocoaAction
 
-    private let content: String?
     
-    init(content: String? = nil, sceneCoordinator: SceneCoordinatorType, storage: StorageType, saveAction: Action<String, Void>? = nil, cancelAction: CocoaAction? = nil) {
+    init(sceneCoordinator: SceneCoordinatorType, storage: StorageType, saveAction: Action<String, Void>? = nil, cancelAction: CocoaAction? = nil) {
         
-        self.content = content
         self.sceneCoordinator = sceneCoordinator
         self.storage = storage
-        
-        
+    
         self.saveAction = Action<String, Void> { input in
             if let action = saveAction {
                 UserDefaults.standard.set(input, forKey: "task")
